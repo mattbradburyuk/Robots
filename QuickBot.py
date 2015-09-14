@@ -9,7 +9,7 @@
 see the LICENSE file included with this software (see LINENSE file)
 """
 
-# test change to file MB
+# second test change to file MB
 
 from __future__ import division
 import sys
