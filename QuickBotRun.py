@@ -14,8 +14,8 @@ from QuickBot import *
 
 print "Running QuickBot"
 
-baseIP = '192.168.7.1'
-robotIP = '192.168.7.2'
+baseIP = '192.168.0.3'
+robotIP = '192.168.0.15'
 
 if len(sys.argv) > 3:
     print 'Invalid number of command line arguments.'
