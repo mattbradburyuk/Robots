@@ -29,7 +29,7 @@ RIGHT = 1
 MIN = 0
 MAX = 1
 
-DEBUG = False
+DEBUG = True
 
 ADCTIME = 0.001
 
