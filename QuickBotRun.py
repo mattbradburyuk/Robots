@@ -1,7 +1,7 @@
 #!/usr/bin/python
 """
 @brief Run QuickBot class for Beaglebone Black
-
+***
 @author Rowland O'Flaherty (rowlandoflaherty.com)
 @date 02/07/2014
 @version: 1.0
