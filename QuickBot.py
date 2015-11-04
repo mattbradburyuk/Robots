@@ -35,7 +35,7 @@ RIGHT = 1
 MIN = 0
 MAX = 1
 
-DEBUG = True
+DEBUG = False
 
 ADCTIME = 0.001
 
@@ -83,7 +83,7 @@ class QuickBot():
     encWinSize = 2**5  # Should be power of 2
     minPWMThreshold = [45, 45]  # Threshold on the minimum value to turn wheel
     encTPrev = [0.0, 0.0]
-    encThreshold = [0.0, 0.0]
+    encThreshold = [800.0, 800.0]
     encTickState = [0, 0]
     encTickStateVec = np.zeros((2, encWinSize))
 
