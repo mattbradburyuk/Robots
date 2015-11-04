@@ -417,7 +417,7 @@ class QuickBot():
                 
                 if ind1 == 0:
                     self.encTimeWin[side, -N:] = ENC_TIME[side][ind0:]
-                        self.encValWin[side, -N:] = ENC_VAL[side][ind0:]
+                    self.encValWin[side, -N:] = ENC_VAL[side][ind0:]
                 else:
                     self.encTimeWin[side, -N:-ind1] = ENC_TIME[side][ind0:]
                     self.encValWin[side, -N:-ind1] = ENC_VAL[side][ind0:]
@@ -462,7 +462,7 @@ class QuickBot():
 
         N = np.sum(t > tPrev)  # Number of new updates
 
-        print "times encoders read: " + self.encCnt + " N: " + N
+        print "times encoders read: " + str(self.encCnt) + " N: " + str(N)
 
         tickStateVec = np.roll(self.encTickStateVec[side], -N)
 
