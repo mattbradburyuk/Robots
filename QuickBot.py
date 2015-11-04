@@ -505,11 +505,6 @@ class QuickBot():
 
 
 
-
-
-
-
-
             if len(tickPeriods) == 0:
                 if all(pwm[newInds] < minPWMThreshold):  # If all inputs are less than min set velocity to 0
                     tickVel = 0
