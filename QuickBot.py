@@ -79,7 +79,7 @@ class QuickBot():
     encoderPin = ('P9_39', 'P9_37')
 
     # Encoder counting parameter and variables
-    ticksPerTurn = 16  # Number of ticks on encoder disc
+    ticksPerTurn = 4  # Number of ticks on encoder disc
     encWinSize = 2**5  # Should be power of 2
     minPWMThreshold = [45, 45]  # Threshold on the minimum value to turn wheel
     encTPrev = [0.0, 0.0]
