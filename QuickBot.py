@@ -511,18 +511,18 @@ class QuickBot():
             else:
                 tickVel = wheelDir * 1/np.mean(tickPeriods)  # Average signed tick frequency
             
-            if DEBUG:
-                print "Side: " + str(side)
-                print "encValWin: " + str(encValWin)
-                # print "encTimeWin (t): " +str(self.encTimeWin[side])
-                # print "tickStateVec: " +str(tickStateVec)
-                print "diffTickStateVec: " + str(diffTickStateVec)            
-                print "fallingTimes: " + str(fallingTimes)            
-                print "risingTimes: " + str(risingTimes)
-                print "fallingPeriods: " + str(fallingPeriods)
-                print "risingPeriods: " + str(risingPeriods)
-                print "tickPeriods: " + str(tickPeriods)
-                print "tickVel: " + str(tickVel)
+            # if False:
+            #     print "Side: " + str(side)
+            #     print "encValWin: " + str(encValWin)
+            #     # print "encTimeWin (t): " +str(self.encTimeWin[side])
+            #     # print "tickStateVec: " +str(tickStateVec)
+            #     print "diffTickStateVec: " + str(diffTickStateVec)            
+            #     print "fallingTimes: " + str(fallingTimes)            
+            #     print "risingTimes: " + str(risingTimes)
+            #     print "fallingPeriods: " + str(fallingPeriods)
+            #     print "risingPeriods: " + str(risingPeriods)
+            #     print "tickPeriods: " + str(tickPeriods)
+            #     print "tickVel: " + str(tickVel)
 
 
             # Estimate new mean values
