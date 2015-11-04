@@ -547,7 +547,7 @@ class QuickBot():
                     self.encNonZeroVar[side] = sigma2Plus
                     self.encNonZeroCnt[side] = n
 
-                    NHigh = np.sum(tickStateVec[newInds] == 1)
+                    NHigh = np.sum(tickStateVec[newInds] == 1) # picks out the high samples and adds them into the HighMean
                     if NHigh != 0:
                         indHighTuple = np.where(tickStateVec[newInds] == 1)
                         x = newEncRaw[indHighTuple[0]]
@@ -559,7 +559,7 @@ class QuickBot():
                         self.encHighVar[side] = sigma2Plus
                         self.encHighTotalCnt[side] = n
 
-                    NLow = np.sum(tickStateVec[newInds] == -1)
+                    NLow = np.sum(tickStateVec[newInds] == -1) # picks out the low samples and adds them into the LowMean
                     if NLow != 0:
                         indLowTuple = np.where(tickStateVec[newInds] == -1)
                         x = newEncRaw[indLowTuple[0]]
@@ -573,7 +573,7 @@ class QuickBot():
 
             # Set threshold value
             if self.encZeroCnt[side] > self.encZeroCntMin:
-                self.encThreshold[side] = self.encZeroMean[side] - 3*np.sqrt(self.encZeroVar[side])
+                self.encThreshold[side] = self.encZeroMean[side] #- 3*np.sqrt(self.encZeroVar[side])
 
 #             elif self.encNonZeroCnt[side] > self.encNonZeroCntMin:
 #                 self.encThreshold[side] = self.encNonZeroMean[side]
