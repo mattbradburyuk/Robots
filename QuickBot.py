@@ -497,34 +497,35 @@ class QuickBot():
 
             # Measure tick speed
             diffTickStateVec = np.diff(tickStateVec)  # Tick state transition differences
-
-            print "diffTickStateVec: " + str(diffTickStateVec)
-
             fallingTimes = t[np.hstack((False,diffTickStateVec == -2))]  # Times when tick state goes from high to low
-            
-            print "fallingTimes: " + str(fallingTimes)
-
             risingTimes = t[np.hstack((False,diffTickStateVec == 2))]  # Times when tick state goes from low to high
-            
-            print "risingTimes: " + str(risingTimes)
-
             fallingPeriods = np.diff(fallingTimes)  # Period times between falling edges
-            
-            print "fallingPeriods: " + str(fallingPeriods)
-
             risingPeriods = np.diff(risingTimes)  # Period times between rising edges
-            
-            print "risingPeriods: " + str(risingPeriods)
-
             tickPeriods = np.hstack((fallingPeriods, risingPeriods)) # All period times
-            
-            print"tickPeriods: " + str(tickPeriods)
+
+
+
+
+
+
+
 
             if len(tickPeriods) == 0:
                 if all(pwm[newInds] < minPWMThreshold):  # If all inputs are less than min set velocity to 0
                     tickVel = 0
             else:
                 tickVel = wheelDir * 1/np.mean(tickPeriods)  # Average signed tick frequency
+            
+            if DEBUG:
+                print "Side: " + str(side)
+                print "diffTickStateVec: " + str(diffTickStateVec)            
+                print "fallingTimes: " + str(fallingTimes)            
+                print "risingTimes: " + str(risingTimes)
+                print "fallingPeriods: " + str(fallingPeriods)
+                print "risingPeriods: " + str(risingPeriods)
+                print "tickPeriods: " + str(tickPeriods)
+                print "tickVel: " + str(tickVel)
+
 
             # Estimate new mean values
             newEncRaw = encValWin[newInds]
