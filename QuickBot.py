@@ -395,23 +395,29 @@ class QuickBot():
             if ind0 < ind1:
                 N = ind1 - ind0  # number of new elements
                 self.encSumN[side] = self.encSumN[side] + N
+
                 self.encTimeWin[side] = np.roll(self.encTimeWin[side], -N)
                 self.encTimeWin[side, -N:] = ENC_TIME[side][ind0:ind1]
+                
                 self.encValWin[side] = np.roll(self.encValWin[side], -N)
                 self.encValWin[side, -N:] = ENC_VAL[side][ind0:ind1]
+                
                 self.encPWMWin[side] = np.roll(self.encPWMWin[side], -N)
                 self.encPWMWin[side, -N:] = [self.pwm[side]]*N
 
             elif ind0 > ind1:
                 N = ENC_BUF_SIZE - ind0 + ind1  # number of new elements
                 self.encSumN[side] = self.encSumN[side] + N
+
                 self.encTimeWin[side] = np.roll(self.encTimeWin[side], -N)
                 self.encValWin[side] = np.roll(self.encValWin[side], -N)
+                
                 self.encPWMWin[side] = np.roll(self.encPWMWin[side], -N)
                 self.encPWMWin[side, -N:] = [self.pwm[side]]*N
+                
                 if ind1 == 0:
                     self.encTimeWin[side, -N:] = ENC_TIME[side][ind0:]
-                    self.encValWin[side, -N:] = ENC_VAL[side][ind0:]
+                        self.encValWin[side, -N:] = ENC_VAL[side][ind0:]
                 else:
                     self.encTimeWin[side, -N:-ind1] = ENC_TIME[side][ind0:]
                     self.encValWin[side, -N:-ind1] = ENC_VAL[side][ind0:]
@@ -419,9 +425,9 @@ class QuickBot():
                     self.encValWin[side, -ind1:] = ENC_VAL[side][0:ind1]
 
             if ind0 != ind1:
-                tauNew = self.encTimeWin[side,-1] - self.encTimeWin[side,-N]
+                tauNew = self.encTimeWin[side,-1] - self.encTimeWin[side,-N] # time from previous last sample to new last sample
                 self.encTau[side] = tauNew / self.encCnt + self.encTau[side] * (self.encCnt-1)/self.encCnt  # Running average
-                if self.encSumN[side] > self.encWinSize:
+                if self.encSumN[side] > self.encWinSize: # check window is full
                     self.countEncoderTicks(side)
 
                 # Fill records
@@ -451,7 +457,12 @@ class QuickBot():
         threshold = self.encThreshold[side]  # Encoder value threshold
         minPWMThreshold = self.minPWMThreshold[side]  # Minimum PWM to move wheel
 
+# ***************not sure about above syntax *********
+
+
         N = np.sum(t > tPrev)  # Number of new updates
+
+        print "times encoders read: " + self.encCnt + " N: " + N
 
         tickStateVec = np.roll(self.encTickStateVec[side], -N)
 
