@@ -35,7 +35,7 @@ RIGHT = 1
 MIN = 0
 MAX = 1
 
-DEBUG = True
+DEBUG = False
 
 ADCTIME = 0.001
 
@@ -572,6 +572,11 @@ class QuickBot():
                         self.encLowTotalCnt[side] = n
 
             # Set threshold value
+
+
+            # MB - not going to change threshold, doesn;t seam to work
+
+            
             # if self.encZeroCnt[side] > self.encZeroCntMin:
             #     self.encThreshold[side] = self.encZeroMean[side] #- 3*np.sqrt(self.encZeroVar[side])
 
