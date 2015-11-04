@@ -9,6 +9,12 @@
 see the LICENSE file included with this software (see LINENSE file)
 """
 
+#  to do
+
+# 1) sort out threshold on side 1
+# 2) reset number of ticks per revolution for new encoders
+
+
 # second test change to file MB
 
 from __future__ import division
@@ -457,12 +463,9 @@ class QuickBot():
         threshold = self.encThreshold[side]  # Encoder value threshold
         minPWMThreshold = self.minPWMThreshold[side]  # Minimum PWM to move wheel
 
-# ***************not sure about above syntax *********
-
-
         N = np.sum(t > tPrev)  # Number of new updates
 
-        print "times encoders read: " + str(self.encCnt) + " N: " + str(N)
+        print "times encoders read: " + str(self.encCnt) + " N: " + str(N) # MB add
 
         tickStateVec = np.roll(self.encTickStateVec[side], -N)
 
@@ -494,11 +497,29 @@ class QuickBot():
 
             # Measure tick speed
             diffTickStateVec = np.diff(tickStateVec)  # Tick state transition differences
+
+            print "diffTickStateVec: " + str(diffTickStateVec)
+
             fallingTimes = t[np.hstack((False,diffTickStateVec == -2))]  # Times when tick state goes from high to low
+            
+            print "fallingTimes: " + str(fallingTimes)
+
             risingTimes = t[np.hstack((False,diffTickStateVec == 2))]  # Times when tick state goes from low to high
+            
+            print "risingTimes: " + str(risingTimes)
+
             fallingPeriods = np.diff(fallingTimes)  # Period times between falling edges
+            
+            print "fallingPeriods: " + str(fallingPeriods)
+
             risingPeriods = np.diff(risingTimes)  # Period times between rising edges
+            
+            print "risingPeriods: " + str(risingPeriods)
+
             tickPeriods = np.hstack((fallingPeriods, risingPeriods)) # All period times
+            
+            print"tickPeriods: " = str(tickPeriods)
+
             if len(tickPeriods) == 0:
                 if all(pwm[newInds] < minPWMThreshold):  # If all inputs are less than min set velocity to 0
                     tickVel = 0
