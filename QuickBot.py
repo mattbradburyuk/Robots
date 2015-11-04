@@ -515,7 +515,7 @@ class QuickBot():
                 print "Side: " + str(side)
                 print "encValWin: " + str(encValWin)
                 # print "encTimeWin (t): " +str(self.encTimeWin[side])
-                print "tickStateVec: " +str(tickStateVec)
+                # print "tickStateVec: " +str(tickStateVec)
                 print "diffTickStateVec: " + str(diffTickStateVec)            
                 print "fallingTimes: " + str(fallingTimes)            
                 print "risingTimes: " + str(risingTimes)
