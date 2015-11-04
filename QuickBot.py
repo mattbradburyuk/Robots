@@ -518,7 +518,7 @@ class QuickBot():
 
             tickPeriods = np.hstack((fallingPeriods, risingPeriods)) # All period times
             
-            print"tickPeriods: " = str(tickPeriods)
+            print"tickPeriods: " + str(tickPeriods)
 
             if len(tickPeriods) == 0:
                 if all(pwm[newInds] < minPWMThreshold):  # If all inputs are less than min set velocity to 0
