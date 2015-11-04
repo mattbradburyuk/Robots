@@ -572,8 +572,8 @@ class QuickBot():
                         self.encLowTotalCnt[side] = n
 
             # Set threshold value
-            if self.encZeroCnt[side] > self.encZeroCntMin:
-                self.encThreshold[side] = self.encZeroMean[side] #- 3*np.sqrt(self.encZeroVar[side])
+            # if self.encZeroCnt[side] > self.encZeroCntMin:
+            #     self.encThreshold[side] = self.encZeroMean[side] #- 3*np.sqrt(self.encZeroVar[side])
 
 #             elif self.encNonZeroCnt[side] > self.encNonZeroCntMin:
 #                 self.encThreshold[side] = self.encNonZeroMean[side]
